@@ -46,7 +46,17 @@ func _input(event):
 			work_modes.FIGHT:
 				pass
 			work_modes.COLLECT:
-				pass
+				var id_of_tiles = 0
+				var founded_tileMap = false
+				for i in get_parent().get_children():
+					if i.is_class("TileMap"):
+						founded_tileMap = true
+						break
+					else:
+						id_of_tiles+=1
+				if founded_tileMap:
+					var tilemap: TileMap = get_parent().get_child(id_of_tiles)
+					harvest(tilemap)
 
 func set_can_work(is_can_work: bool):
 	can_work = is_can_work
@@ -110,17 +120,13 @@ func farm(tilemap: TileMap):
 					"wheat":
 						tilemap.set_cell(2, tilemap.local_to_map(get_global_mouse_position()), 2, Vector2i(0,0))
 						get_parent().add_to_dict_with_plants(tilemap.local_to_map(get_global_mouse_position()), "wheat", 0)
-		else:
-			var have_we_plant_bool = have_we_plant.get_custom_data("can_be_farmed")
-			if not have_we_plant_bool:
-				if can_be_farmed:
-					match plant_name:
-						"wheat":
-							tilemap.set_cell(2, tilemap.local_to_map(get_global_mouse_position()), 2, Vector2i(0,0))
-							get_parent().add_to_dict_with_plants(tilemap.local_to_map(get_global_mouse_position()), "wheat", 0)
-	
-	
-	
+
+func harvest(tilemap: TileMap):
+	var harvest_tile_data: TileData = tilemap.get_cell_tile_data(2, tilemap.local_to_map(get_global_mouse_position()))
+	if harvest_tile_data:
+		var can_be_harvest = harvest_tile_data.get_custom_data("can_be_harvest")
+		if can_be_harvest:
+			var name_of_plant = harvest_tile_data.get_custom_data("plant_name")
 	
 	
 	
