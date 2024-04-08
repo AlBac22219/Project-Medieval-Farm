@@ -290,12 +290,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eehfn"]
 size = Vector2(40, 40)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "check_area")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_player") groups=["Player"]]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pxqs5")
 anim_player = NodePath("AnimationPlayer")
-check_area = NodePath("")
 
 [node name="Sprites" type="Node2D" parent="."]
 

@@ -13,6 +13,9 @@ var can_work = true
 var areas_array = []
 var plant_name = "wheat"
 
+func _ready():
+	Global.set_player_node(self)
+
 func _physics_process(delta):
 	var direction = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
 	Input.get_action_strength("move_down") - Input.get_action_strength("move_up"))
@@ -85,7 +88,6 @@ func set_animation(direction):
 			walk_states.WALK_UP:
 				anim_player.play("stand_up")
 
-
 func _on_area_for_work_mouse_entered():
 	in_work_area = true
 
@@ -113,7 +115,6 @@ func farm(tilemap: TileMap):
 	if ground_tile_data:
 		var can_be_farmed = ground_tile_data.get_custom_data("can_be_farmed")
 		var have_we_plant = tilemap.get_cell_tile_data(2, tilemap.local_to_map(get_global_mouse_position()))
-		print(have_we_plant)
 		if not have_we_plant:
 			if can_be_farmed:
 				match plant_name:
@@ -127,7 +128,6 @@ func harvest(tilemap: TileMap):
 		var can_be_harvest = harvest_tile_data.get_custom_data("can_be_harvest")
 		if can_be_harvest:
 			var name_of_plant = harvest_tile_data.get_custom_data("plant_name")
-	
 	
 	
 	

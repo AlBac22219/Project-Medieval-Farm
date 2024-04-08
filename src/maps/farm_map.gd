@@ -17,7 +17,7 @@ func grow_plants():
 	for i in dict_with_plants.keys():
 		if dict_with_plants[i][1]<max_stage:
 			tilemap.set_cell(2, i, 2, Vector2i(dict_with_plants[i][1]+1,0))
-		if dict_with_plants[i][1] > max_life_cycle:
+		if dict_with_plants[i][1] >= max_life_cycle:
 			tilemap.erase_cell(2, i)
 			dict_with_plants.erase(i)
 		else:

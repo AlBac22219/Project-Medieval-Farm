@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://6lv2gk5ghk5f"]
+[gd_scene load_steps=10 format=3 uid="uid://6lv2gk5ghk5f"]
 
 [ext_resource type="PackedScene" uid="uid://dstcnry5sbpat" path="res://src/tileset/tile_map.tscn" id="1_1h5jj"]
 [ext_resource type="Script" path="res://src/maps/farm_map.gd" id="1_jlp1r"]
 [ext_resource type="PackedScene" uid="uid://kf3yty81ahyw" path="res://src/characters/Player/player.tscn" id="2_me8pa"]
 [ext_resource type="Script" path="res://src/maps/DayNightMode.gd" id="4_s8ptx"]
 [ext_resource type="PackedScene" uid="uid://dga1wsu844s3m" path="res://src/UI/day_cycle_ui.tscn" id="5_sqvar"]
+[ext_resource type="PackedScene" uid="uid://bj4xy7qggx3ta" path="res://src/items/inventory_item.tscn" id="6_goftp"]
+[ext_resource type="Texture2D" uid="uid://bi1ueedv3astc" path="res://assets/textures/plants/test_seed.png" id="7_ois2e"]
 
 [sub_resource type="Gradient" id="Gradient_dfy7q"]
 offsets = PackedFloat32Array(0, 0.216867, 0.451807, 0.590361, 0.759036, 1)
@@ -31,11 +33,18 @@ position = Vector2(486, 215)
 color = Color(0.188235, 0.152941, 0.219608, 1)
 script = ExtResource("4_s8ptx")
 gradient = SubResource("GradientTexture1D_c1y3i")
-INGAME_SPEED = 200.0
 INITIAL_HOUR = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Day_cycle_UI" parent="CanvasLayer" instance=ExtResource("5_sqvar")]
+
+[node name="Inventory_item" parent="." instance=ExtResource("6_goftp")]
+position = Vector2(555, 206)
+item_type = "Debug"
+item_name = "Debug"
+item_texture = ExtResource("7_ois2e")
+item_effect = "Debug"
+optimal_price = 999
 
 [connection signal="new_day" from="DayNightMode" to="." method="_on_day_night_mode_new_day"]
