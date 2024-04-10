@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bclon4nc4gl38"]
+
+[ext_resource type="Script" path="res://src/UI/inventory_ui.gd" id="1_13wj6"]
+[ext_resource type="FontFile" uid="uid://d0jx46n588qvg" path="res://assets/fonts/Softie Cyr.ttf" id="2_evrfb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0ayd"]
+font = ExtResource("2_evrfb")
+font_size = 96
+
+[node name="Inventory_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_13wj6")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -460.0
+offset_right = 512.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.756863, 0.627451, 0.439216, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_y0ayd")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10

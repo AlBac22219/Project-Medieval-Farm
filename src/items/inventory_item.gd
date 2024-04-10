@@ -2,15 +2,16 @@
 
 extends CharacterBody2D
 
-
+@export var quantity: int = 1
 @export var item_type = ""
 @export var item_name = ""
 @export var item_texture: Texture
 @export var item_effect = ""
 @export var optimal_price:int = 0
+@export var max_quantity: int = 0
 const scene_path = "res://src/items/inventory_item.tscn"
-const SPEED = 600.0
-const ACCELERATION = 600.0
+const SPEED = 900.0
+const ACCELERATION = 900.0
 @export var icon_sprite: Sprite2D
 
 var player = null
@@ -37,12 +38,13 @@ func _process(delta):
 
 func pickup_item():
 	var item = {
-		"quantity": 1,
+		"quantity": quantity,
 		"item_type": item_type,
 		"item_name": item_name,
 		"item_texture": item_texture,
 		"item_effect": item_effect,
 		"optimal_price": optimal_price,
+		"max_quantity": max_quantity,
 		"scene_path": scene_path
 	}
 	if Global.player_node:

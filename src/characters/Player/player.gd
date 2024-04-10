@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var anim_player: AnimationPlayer
-@export var check_area: Area2D
+@export var inventory_ui: CanvasLayer
 const SPEED = 30.0
 const ACCELERATION = 200.0
 enum walk_states {WALK_LEFT, WALK_RIGHT, WALK_DOWN, WALK_UP}
@@ -9,7 +9,7 @@ enum work_modes {DIG, FIGHT, RIDGE, FARM, COLLECT}
 var last_state = walk_states.WALK_DOWN
 var work_mode = work_modes.FARM
 var in_work_area = false
-var can_work = true
+var can_work = false
 var areas_array = []
 var plant_name = "wheat"
 

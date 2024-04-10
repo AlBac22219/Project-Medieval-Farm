@@ -11,9 +11,14 @@ func _ready():
 func add_item(item):
 	for i in range(inventory.size()):
 		if inventory[i] != null and inventory[i]["item_type"] == item["item_type"] and inventory[i]["item_name"] == item["item_name"]:
-			inventory[i]["quantity"] += item["quantity"]
-			inventory_update.emit()
-			return true
+			if (inventory[i]["quantity"] + item["quantity"]) <= inventory[i]["max_quantity"]:
+				inventory[i]["quantity"] += item["quantity"]
+				inventory_update.emit()
+				return true
+			elif inventory[i]["quantity"] < inventory[i]["max_quantity"]:
+				var remains_of_item = inventory[i]["max_quantity"] - inventory[i]["quantity"]
+				item["quantity"] = item["quantity"] - remains_of_item
+				inventory[i]["quantity"] += remains_of_item
 		elif inventory[i] == null:
 			inventory[i] = item
 			inventory_update.emit()

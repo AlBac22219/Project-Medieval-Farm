@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu2xk2chu0ko1"]
+
+[ext_resource type="Script" path="res://src/UI/inventory_slot.gd" id="1_gbxnf"]
+[ext_resource type="FontFile" uid="uid://d0jx46n588qvg" path="res://assets/fonts/Softie Cyr.ttf" id="2_8kkc7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgpav"]
+font = ExtResource("2_8kkc7")
+font_size = 18
+
+[node name="Inventory_slot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -1787.0
+offset_bottom = -947.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gbxnf")
+
+[node name="Outer_border" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65098, 0.52549, 0.345098, 1)
+
+[node name="Inner_border" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -62.0
+offset_right = 62.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.756863, 0.627451, 0.439216, 1)
+
+[node name="Item_icon" type="TextureRect" parent="Inner_border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item_quantity" type="Label" parent="Inner_border"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "
+"
+label_settings = SubResource("LabelSettings_pgpav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Outer_border" to="." method="_on_outer_border_mouse_entered"]
+[connection signal="mouse_exited" from="Outer_border" to="." method="_on_outer_border_mouse_exited"]
