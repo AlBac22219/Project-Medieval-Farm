@@ -7,7 +7,8 @@
 font = ExtResource("2_evrfb")
 font_size = 96
 
-[node name="Inventory_ui" type="Control"]
+[node name="Inventory_ui" type="Control" node_paths=PackedStringArray("grid_cont", "player_texture_node")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_13wj6")
+grid_cont = NodePath("ColorRect/GridContainer")
+player_texture_node = NodePath("ColorRect/Player_texture")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -24,12 +27,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -512.0
+offset_left = -645.0
 offset_top = -460.0
-offset_right = 512.0
+offset_right = 645.0
 offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.756863, 0.627451, 0.439216, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
@@ -44,17 +48,62 @@ grow_horizontal = 2
 text = "Inventory"
 label_settings = SubResource("LabelSettings_y0ayd")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_top = 92.0
+offset_right = 256.0
+offset_bottom = 424.0
+
+[node name="Player_texture" type="Control" parent="ColorRect"]
+anchors_preset = 0
+offset_top = 168.0
+offset_right = 256.0
+offset_bottom = 424.0
+
+[node name="Player_body" type="Sprite2D" parent="ColorRect/Player_texture"]
+position = Vector2(128, 128)
+scale = Vector2(8, 8)
+hframes = 8
+vframes = 8
+
+[node name="Body_armor" type="Sprite2D" parent="ColorRect/Player_texture"]
+position = Vector2(128, 128)
+scale = Vector2(8, 8)
+hframes = 8
+vframes = 8
+
+[node name="Legs_armor" type="Sprite2D" parent="ColorRect/Player_texture"]
+position = Vector2(128, 128)
+scale = Vector2(8, 8)
+hframes = 8
+vframes = 8
+
+[node name="Hair" type="Sprite2D" parent="ColorRect/Player_texture"]
+position = Vector2(128, 128)
+scale = Vector2(8, 8)
+hframes = 8
+vframes = 8
+
+[node name="Head_armor" type="Sprite2D" parent="ColorRect/Player_texture"]
+position = Vector2(128, 96)
+scale = Vector2(8, 8)
+hframes = 8
+vframes = 8
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -250.0
-offset_right = 450.0
-offset_bottom = 250.0
+offset_left = -578.0
+offset_top = 39.0
+offset_right = 574.0
+offset_bottom = 451.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 129
+theme_override_constants/v_separation = 129
 columns = 10

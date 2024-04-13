@@ -1,12 +1,12 @@
 extends Node
 
+@onready var inventory_slot_scene = preload("res://src/UI/inventory_slot.tscn")
 signal inventory_update
-
 var inventory = []
 var player_node: Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	inventory.resize(10)
+	inventory.resize(20)
 
 func add_item(item):
 	for i in range(inventory.size()):
@@ -19,11 +19,11 @@ func add_item(item):
 				var remains_of_item = inventory[i]["max_quantity"] - inventory[i]["quantity"]
 				item["quantity"] = item["quantity"] - remains_of_item
 				inventory[i]["quantity"] += remains_of_item
+				inventory_update.emit()
 		elif inventory[i] == null:
 			inventory[i] = item
 			inventory_update.emit()
 			return true
-	
 	return false
 
 func have_free_space_in_inventory() -> bool:
