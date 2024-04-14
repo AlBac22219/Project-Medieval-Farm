@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdgjxj0x74iro"]
+
+[ext_resource type="Script" path="res://src/UI/Inventory/inventory_slot.gd" id="1_kcryd"]
+[ext_resource type="FontFile" uid="uid://d0jx46n588qvg" path="res://assets/fonts/Softie Cyr.ttf" id="2_v3lcr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fnvu"]
+font = ExtResource("2_v3lcr")
+font_size = 32
+
+[node name="Inventory_slot" type="Panel" node_paths=PackedStringArray("item_sprite", "quantity")]
+process_mode = 3
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1800.0
+offset_bottom = -960.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kcryd")
+item_sprite = NodePath("Panel/Item_sprite")
+quantity = NodePath("Panel/Quantity_of_items_label")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -58.0
+offset_right = 58.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item_sprite" type="Sprite2D" parent="Panel"]
+position = Vector2(58, 58)
+scale = Vector2(6, 6)
+
+[node name="Quantity_of_items_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_0fnvu")
+horizontal_alignment = 1

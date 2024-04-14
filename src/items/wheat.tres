@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://2wfvpwr7ir42"]
+
+[ext_resource type="Script" path="res://src/Resources/InventoryItem.gd" id="1_ncrpv"]
+[ext_resource type="Texture2D" uid="uid://riey02kfpg44" path="res://assets/textures/items/Wheat.png" id="2_ob4sw"]
+
+[resource]
+script = ExtResource("1_ncrpv")
+texture = ExtResource("2_ob4sw")
+name = "Пшеница"
+type = "Продукт"
+description = "Золотистые зерна собранные с вашего поля. Подходят как для продажи, так и для посевов."
+max_quantity = 64

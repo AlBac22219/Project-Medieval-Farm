@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://src/maps/farm_map.gd" id="1_jlp1r"]
 [ext_resource type="PackedScene" uid="uid://kf3yty81ahyw" path="res://src/characters/Player/player.tscn" id="2_me8pa"]
 [ext_resource type="Script" path="res://src/maps/DayNightMode.gd" id="4_s8ptx"]
-[ext_resource type="PackedScene" uid="uid://dga1wsu844s3m" path="res://src/UI/day_cycle_ui.tscn" id="5_sqvar"]
+[ext_resource type="PackedScene" uid="uid://dga1wsu844s3m" path="res://src/UI/Day_night_cycl_ui/day_cycle_ui.tscn" id="5_sqvar"]
 [ext_resource type="PackedScene" uid="uid://bj4xy7qggx3ta" path="res://src/items/inventory_item.tscn" id="6_goftp"]
-[ext_resource type="Texture2D" uid="uid://bi1ueedv3astc" path="res://assets/textures/plants/test_seed.png" id="7_ois2e"]
+[ext_resource type="Resource" uid="uid://2wfvpwr7ir42" path="res://src/items/wheat.tres" id="7_7puwo"]
 
 [sub_resource type="Gradient" id="Gradient_dfy7q"]
 offsets = PackedFloat32Array(0, 0.216867, 0.451807, 0.590361, 0.759036, 1)
@@ -41,16 +41,11 @@ INITIAL_HOUR = 9
 
 [node name="Day_cycle_UI" parent="CanvasLayer" instance=ExtResource("5_sqvar")]
 
-[node name="Inventory_item" parent="." instance=ExtResource("6_goftp")]
-position = Vector2(605, 201)
-item_type = "Debug"
-item_name = "Debug"
-item_texture = ExtResource("7_ois2e")
-item_effect = "Debug"
-optimal_price = 999
-max_quantity = 2
-
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(633, 288)
+
+[node name="Inventory_item" parent="." instance=ExtResource("6_goftp")]
+position = Vector2(615, 195)
+item_type = ExtResource("7_7puwo")
 
 [connection signal="new_day" from="DayNightMode" to="." method="_on_day_night_mode_new_day"]

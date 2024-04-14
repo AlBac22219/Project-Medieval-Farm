@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://src/characters/Player/player.gd" id="1_pxqs5"]
 [ext_resource type="Shader" uid="uid://d3x3ml6gauonn" path="res://src/characters/Player/player.tres" id="2_bkhc3"]
 [ext_resource type="Texture2D" uid="uid://by62w7chrbmtr" path="res://assets/textures/characters/hairs/char_a_p1_4har_bob1_v01.png" id="2_kw8l2"]
-[ext_resource type="PackedScene" uid="uid://bclon4nc4gl38" path="res://src/UI/inventory_ui.tscn" id="5_h7mts"]
+[ext_resource type="Resource" uid="uid://dmdckuea71gg2" path="res://src/UI/PlayerInventory.tres" id="2_qlge7"]
+[ext_resource type="PackedScene" uid="uid://bclon4nc4gl38" path="res://src/UI/Inventory/inventory_ui.tscn" id="5_h7mts"]
 [ext_resource type="Texture2D" uid="uid://dffkig2irdppe" path="res://assets/textures/characters/clothing/hats/hat.png" id="5_lmir1"]
 [ext_resource type="Texture2D" uid="uid://chitl84dm8gdf" path="res://assets/textures/characters/clothing/up armor/pijamas_up.png" id="5_oabyx"]
 [ext_resource type="Texture2D" uid="uid://crmtsi72t5803" path="res://assets/textures/characters/clothing/legs/pijamas_pants.png" id="5_y3l47"]
-[ext_resource type="PackedScene" uid="uid://wf7l8wn5w3x7" path="res://src/UI/in_game_inventory.tscn" id="9_vet56"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50pfq"]
 shader = ExtResource("2_bkhc3")
@@ -626,6 +626,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_pxqs5")
 anim_player = NodePath("AnimationPlayer")
 inventory_ui = NodePath("Inventory_ui")
+inventory = ExtResource("2_qlge7")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -683,8 +684,6 @@ shape = SubResource("RectangleShape2D_eehfn")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="In_game_inventory_ui" type="CanvasLayer" parent="."]
-
-[node name="In_game_inventory" parent="In_game_inventory_ui" instance=ExtResource("9_vet56")]
 
 [node name="Inventory_ui" type="CanvasLayer" parent="."]
 visible = false

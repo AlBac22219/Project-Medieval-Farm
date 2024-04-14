@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var anim_player: AnimationPlayer
 @export var inventory_ui: CanvasLayer
+@export var inventory: Inventory
 const SPEED = 30.0
 const ACCELERATION = 200.0
 enum walk_states {WALK_LEFT, WALK_RIGHT, WALK_DOWN, WALK_UP}

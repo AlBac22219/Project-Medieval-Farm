@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bclon4nc4gl38"]
+[gd_scene load_steps=5 format=3 uid="uid://bclon4nc4gl38"]
 
-[ext_resource type="Script" path="res://src/UI/inventory_ui.gd" id="1_13wj6"]
-[ext_resource type="FontFile" uid="uid://d0jx46n588qvg" path="res://assets/fonts/Softie Cyr.ttf" id="2_evrfb"]
+[ext_resource type="Script" path="res://src/UI/Inventory/inventory_ui.gd" id="1_llxjk"]
+[ext_resource type="Resource" uid="uid://dmdckuea71gg2" path="res://src/UI/PlayerInventory.tres" id="2_mtfla"]
+[ext_resource type="FontFile" uid="uid://d0jx46n588qvg" path="res://assets/fonts/Softie Cyr.ttf" id="2_nvitl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0ayd"]
-font = ExtResource("2_evrfb")
+font = ExtResource("2_nvitl")
 font_size = 96
 
 [node name="Inventory_ui" type="Control" node_paths=PackedStringArray("grid_cont", "player_texture_node")]
@@ -15,9 +16,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_13wj6")
+script = ExtResource("1_llxjk")
 grid_cont = NodePath("ColorRect/GridContainer")
 player_texture_node = NodePath("ColorRect/Player_texture")
+inventory = ExtResource("2_mtfla")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -104,6 +106,6 @@ offset_bottom = 451.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_constants/h_separation = 129
-theme_override_constants/v_separation = 129
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
 columns = 10

@@ -17,13 +17,7 @@ func _ready():
 	player.set_can_work(true)
 	var wheat_drop = plant.instantiate()
 	wheat_drop.global_position = $Marker2D.global_position
-	wheat_drop.quantity = 2
-	wheat_drop.item_type = "Debug"
-	wheat_drop.item_name = "Debug"
-	wheat_drop.item_texture = load("res://assets/textures/characters/bodyes/male.png")
-	wheat_drop.item_effect = "Debug"
-	wheat_drop.optimal_price = 999
-	wheat_drop.max_quantity = 2
+	wheat_drop.item_type = preload("res://src/items/wheat.tres")
 	add_child(wheat_drop)
 
 func grow_plants():
