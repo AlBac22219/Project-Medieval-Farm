@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://exb73hdp6xc7"]
+
+[ext_resource type="Script" path="res://src/UI/Inventory/in_game_inventory_ui.gd" id="1_1ktmg"]
+[ext_resource type="Resource" uid="uid://dmdckuea71gg2" path="res://src/UI/PlayerInventory.tres" id="2_702no"]
+
+[node name="InGameInventoryUI" type="Control" node_paths=PackedStringArray("h_box_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1ktmg")
+h_box_container = NodePath("Panel/HBoxContainer")
+inventory = ExtResource("2_702no")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1280, 104)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 104.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25

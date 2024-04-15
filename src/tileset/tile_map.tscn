@@ -774,6 +774,8 @@ texture = ExtResource("3_r7cil")
 2:0/0/custom_data_1 = true
 2:0/0/custom_data_3 = true
 2:0/0/custom_data_4 = "wheat"
+2:0/0/custom_data_5 = "res://src/items/wheat.tres"
+2:0/0/custom_data_6 = "res://src/items/inventory_item.tscn"
 
 [sub_resource type="TileSet" id="TileSet_o2jok"]
 terrain_set_0/mode = 0
@@ -791,6 +793,10 @@ custom_data_layer_3/name = "can_be_harvest"
 custom_data_layer_3/type = 1
 custom_data_layer_4/name = "plant_name"
 custom_data_layer_4/type = 4
+custom_data_layer_5/name = "plant_path"
+custom_data_layer_5/type = 4
+custom_data_layer_6/name = "path_to_scene"
+custom_data_layer_6/type = 4
 sources/0 = SubResource("TileSetAtlasSource_14itl")
 sources/1 = SubResource("TileSetAtlasSource_4d7cn")
 sources/2 = SubResource("TileSetAtlasSource_l8cj8")

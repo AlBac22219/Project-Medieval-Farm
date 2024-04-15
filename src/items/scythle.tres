@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c2q3422oeuiv5"]
+
+[ext_resource type="Script" path="res://src/Resources/InventoryItem.gd" id="1_p7jty"]
+[ext_resource type="Texture2D" uid="uid://clyf110jispc4" path="res://assets/textures/items/Scythle.png" id="2_gxyto"]
+
+[resource]
+script = ExtResource("1_p7jty")
+texture = ExtResource("2_gxyto")
+name = "Коса"
+type = "Инструмент"
+description = "Острая коса для сбора растений"
+max_quantity = 1
+tileset_coord = Vector2i(0, 0)
+work_mode = 4

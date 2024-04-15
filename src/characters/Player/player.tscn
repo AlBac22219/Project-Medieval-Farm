@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://kf3yty81ahyw"]
+[gd_scene load_steps=25 format=3 uid="uid://kf3yty81ahyw"]
 
 [ext_resource type="Texture2D" uid="uid://dhcarp7gnup3k" path="res://assets/textures/characters/bodyes/male.png" id="1_643hg"]
 [ext_resource type="Script" path="res://src/characters/Player/player.gd" id="1_pxqs5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dffkig2irdppe" path="res://assets/textures/characters/clothing/hats/hat.png" id="5_lmir1"]
 [ext_resource type="Texture2D" uid="uid://chitl84dm8gdf" path="res://assets/textures/characters/clothing/up armor/pijamas_up.png" id="5_oabyx"]
 [ext_resource type="Texture2D" uid="uid://crmtsi72t5803" path="res://assets/textures/characters/clothing/legs/pijamas_pants.png" id="5_y3l47"]
+[ext_resource type="PackedScene" uid="uid://exb73hdp6xc7" path="res://src/UI/Inventory/in_game_inventory_ui.tscn" id="9_8oyhq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50pfq"]
 shader = ExtResource("2_bkhc3")
@@ -685,6 +686,8 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="In_game_inventory_ui" type="CanvasLayer" parent="."]
 
+[node name="InGameInventoryUI" parent="In_game_inventory_ui" instance=ExtResource("9_8oyhq")]
+
 [node name="Inventory_ui" type="CanvasLayer" parent="."]
 visible = false
 
@@ -692,3 +695,4 @@ visible = false
 
 [connection signal="mouse_entered" from="Area_for_work" to="." method="_on_area_for_work_mouse_entered"]
 [connection signal="mouse_exited" from="Area_for_work" to="." method="_on_area_for_work_mouse_exited"]
+[connection signal="get_slot" from="In_game_inventory_ui/InGameInventoryUI" to="." method="_on_in_game_inventory_ui_get_slot"]

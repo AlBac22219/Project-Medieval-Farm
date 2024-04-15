@@ -9,12 +9,12 @@ font_size = 32
 
 [node name="Inventory_slot" type="Panel" node_paths=PackedStringArray("item_sprite", "quantity")]
 process_mode = 3
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(102, 102)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1800.0
-offset_bottom = -960.0
+offset_right = -1824.0
+offset_bottom = -984.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kcryd")
@@ -22,22 +22,22 @@ item_sprite = NodePath("Panel/Item_sprite")
 quantity = NodePath("Panel/Quantity_of_items_label")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(92, 92)
+custom_minimum_size = Vector2(98, 98)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -58.0
-offset_right = 58.0
-offset_bottom = 58.0
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Item_sprite" type="Sprite2D" parent="Panel"]
-position = Vector2(58, 58)
+position = Vector2(49, 49)
 scale = Vector2(6, 6)
 
 [node name="Quantity_of_items_label" type="Label" parent="Panel"]

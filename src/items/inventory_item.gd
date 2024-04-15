@@ -16,7 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if player_in_range && can_be_pickable:
-		if Global.have_free_space_in_inventory():
+		if player.inventory.have_free_space():
 			var direction = Vector2(player.global_position.x - global_position.x, player.global_position.y - global_position.y)
 			direction = direction.normalized()
 			velocity.x = move_toward(velocity.x, direction.x * SPEED, ACCELERATION * delta)
@@ -26,10 +26,7 @@ func _process(delta):
 			move_and_slide()
 
 func pickup_item(inventory: Inventory):
-	var inventory_slot: InventorySlot
-	#inventory_slot.item = item_type
-	#inventory_slot.quantity = quantity
-	inventory.insert_item(item_type)
+	inventory.insert_item(item_type, quantity)
 	queue_free()
 
 func _on_area_2d_area_entered(area):
@@ -44,3 +41,5 @@ func _on_area_2d_area_exited(area):
 		player = null
 		can_be_pickable = false
 
+func set_quantity(new_quantity: int):
+	quantity = new_quantity

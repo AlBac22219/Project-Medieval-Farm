@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var anim_player: AnimationPlayer
 @export var inventory_ui: CanvasLayer
 @export var inventory: Inventory
+@export var plant_seed: InventorySlot
 const SPEED = 30.0
 const ACCELERATION = 200.0
 enum walk_states {WALK_LEFT, WALK_RIGHT, WALK_DOWN, WALK_UP}
@@ -12,10 +13,9 @@ var work_mode = work_modes.FARM
 var in_work_area = false
 var can_work = false
 var areas_array = []
-var plant_name = "wheat"
 
 func _ready():
-	Global.set_player_node(self)
+	pass
 
 func _physics_process(delta):
 	var direction = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
@@ -117,21 +117,34 @@ func farm(tilemap: TileMap):
 		var can_be_farmed = ground_tile_data.get_custom_data("can_be_farmed")
 		var have_we_plant = tilemap.get_cell_tile_data(2, tilemap.local_to_map(get_global_mouse_position()))
 		if not have_we_plant:
-			if can_be_farmed:
-				match plant_name:
-					"wheat":
-						tilemap.set_cell(2, tilemap.local_to_map(get_global_mouse_position()), 2, Vector2i(0,0))
-						get_parent().add_to_dict_with_plants(tilemap.local_to_map(get_global_mouse_position()), "wheat", 0)
+			if can_be_farmed && plant_seed.item != null:
+				plant_seed.quantity -= 1
+				tilemap.set_cell(2, tilemap.local_to_map(get_global_mouse_position()), 2, plant_seed.item.tileset_coord)
+				get_parent().add_to_dict_with_plants(tilemap.local_to_map(get_global_mouse_position()), plant_seed.item.name, 0)
+				if plant_seed.quantity < 1:
+					plant_seed.item = null
+				inventory.update_inventory.emit()
 
 func harvest(tilemap: TileMap):
 	var harvest_tile_data: TileData = tilemap.get_cell_tile_data(2, tilemap.local_to_map(get_global_mouse_position()))
 	if harvest_tile_data:
 		var can_be_harvest = harvest_tile_data.get_custom_data("can_be_harvest")
 		if can_be_harvest:
-			var name_of_plant = harvest_tile_data.get_custom_data("plant_name")
-	
-	
-	
-	
-	
-	
+			var path_of_plant = harvest_tile_data.get_custom_data("plant_path")
+			var path_to_scene = harvest_tile_data.get_custom_data("path_to_scene")
+			var plant_scene: PackedScene = load(path_to_scene)
+			var plant =  plant_scene.instantiate()
+			plant.global_position = get_global_mouse_position()
+			plant.item_type = load(path_of_plant)
+			plant.set_quantity(randi_range(2,6))
+			get_parent().add_child(plant)
+			tilemap.erase_cell(2, tilemap.local_to_map(get_global_mouse_position()))
+
+func _on_in_game_inventory_ui_get_slot(slot: InventorySlot):
+	if slot.item:
+		if slot.item["type"] == "Семена":
+			plant_seed = slot
+			work_mode = slot.item["work_mode"]
+		elif slot.item["type"] == "Инструмент":
+			plant_seed = null
+			work_mode = slot.item["work_mode"]

@@ -5,7 +5,6 @@ extends Node2D
 @export var canvas_layer: CanvasLayer
 @export var time_ui: Control
 @export var player: CharacterBody2D
-@export var plant: PackedScene
 
 var dict_with_plants = {}
 const max_stage = 2
@@ -15,10 +14,6 @@ func _ready():
 	canvas_layer.visible = true
 	day_night_canvas.time_tick.connect(time_ui.set_day_time)
 	player.set_can_work(true)
-	var wheat_drop = plant.instantiate()
-	wheat_drop.global_position = $Marker2D.global_position
-	wheat_drop.item_type = preload("res://src/items/wheat.tres")
-	add_child(wheat_drop)
 
 func grow_plants():
 	for i in dict_with_plants.keys():

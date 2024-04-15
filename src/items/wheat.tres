@@ -7,6 +7,8 @@
 script = ExtResource("1_ncrpv")
 texture = ExtResource("2_ob4sw")
 name = "Пшеница"
-type = "Продукт"
+type = "Семена"
 description = "Золотистые зерна собранные с вашего поля. Подходят как для продажи, так и для посевов."
 max_quantity = 64
+tileset_coord = Vector2i(0, 0)
+work_mode = 3
