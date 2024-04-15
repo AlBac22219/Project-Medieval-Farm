@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdgjxj0x74iro"]
+[gd_scene load_steps=5 format=3 uid="uid://cdgjxj0x74iro"]
 
 [ext_resource type="Script" path="res://src/UI/Inventory/inventory_slot.gd" id="1_kcryd"]
+[ext_resource type="Texture2D" uid="uid://bskcf3xk36pog" path="res://assets/textures/ui/slot_texture.png" id="2_s0s6r"]
 [ext_resource type="FontFile" uid="uid://d0jx46n588qvg" path="res://assets/fonts/Softie Cyr.ttf" id="2_v3lcr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fnvu"]
 font = ExtResource("2_v3lcr")
 font_size = 32
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
-[node name="Inventory_slot" type="Panel" node_paths=PackedStringArray("item_sprite", "quantity")]
+[node name="Inventory_slot" type="Button" node_paths=PackedStringArray("background_sprite", "item_sprite", "quantity")]
 process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(102, 102)
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,10 +22,18 @@ offset_bottom = -984.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kcryd")
+background_sprite = NodePath("Sprite2D")
 item_sprite = NodePath("Panel/Item_sprite")
 quantity = NodePath("Panel/Quantity_of_items_label")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s0s6r")
+centered = false
+vframes = 2
+frame = 1
+
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(98, 98)
 layout_mode = 1
 anchors_preset = 8
@@ -35,6 +47,7 @@ offset_right = 46.0
 offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Item_sprite" type="Sprite2D" parent="Panel"]
 position = Vector2(49, 49)
@@ -51,3 +64,5 @@ grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_0fnvu")
 horizontal_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

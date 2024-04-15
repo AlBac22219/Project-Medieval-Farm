@@ -12,3 +12,4 @@ description = "Острая коса для сбора растений"
 max_quantity = 1
 tileset_coord = Vector2i(0, 0)
 work_mode = 4
+optimal_price = 20.0

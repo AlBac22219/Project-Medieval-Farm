@@ -35,6 +35,7 @@ position = Vector2(486, 215)
 color = Color(0.188235, 0.152941, 0.219608, 1)
 script = ExtResource("4_s8ptx")
 gradient = SubResource("GradientTexture1D_c1y3i")
+INGAME_SPEED = 2.0
 INITIAL_HOUR = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

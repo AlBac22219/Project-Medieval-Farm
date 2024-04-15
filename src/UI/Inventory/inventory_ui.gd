@@ -10,32 +10,12 @@ func _ready():
 	create_inventory(inventory.slots.size())
 	inventory.connect("update_inventory", update)
 	update()
-	#Global.player_inventory_grid_container = grid_cont
-	#Global.inventory_update.connect(_on_inventory_update)
-	#_on_inventory_update()
 
 func _input(event):
 	if event.is_action_pressed("inventory_button"):
 		get_parent().visible = !get_parent().visible
 		get_tree().paused = !get_tree().paused
 		open_inventory()
-
-func _on_inventory_update():
-	clear_grid_conteiner()
-	for item in Global.inventory:
-		var slot = Global.inventory_slot_scene.instantiate()
-		if item != null:
-			slot.set_item(item, false)
-		else:
-			slot.set_empty()
-		grid_cont.add_child(slot)
-	#updated_inventory.emit()
-
-func clear_grid_conteiner():
-	while grid_cont.get_child_count() > 0:
-		var child = grid_cont.get_child(0)
-		grid_cont.remove_child(child)
-		child.queue_free()
 
 func open_inventory():
 	for i in get_parent().get_parent().get_child(0).get_child_count():
@@ -52,4 +32,4 @@ func create_inventory(inventory_size: int):
 func update():
 	for i in range(min(inventory.slots.size(), slots.size())):
 		slots[i].update(inventory.slots[i])
-		
+
